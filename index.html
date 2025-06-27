@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Undangan Pernikahan Alif & Rani</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #f6f2ec;
+      color: #5b3924;
+      overflow-x: hidden;
+    }
+    header {
+      background-image: url('bg1.jpg');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    header p {
+      color: #fff;
+      font-size: 1.2em;
+    }
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .section p {
+      max-width: 600px;
+      margin: auto;
+    }
+    .couple {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .person {
+      width: 200px;
+    }
+    .person img {
+      width: 100%;
+      border-radius: 50%;
+      border: 5px solid #c7a17a;
+    }
+    .person h3 {
+      margin-top: 15px;
+      font-size: 1.2em;
+    }
+    .countdown {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 90%;
+      max-width: 300px;
+      margin: 10px;
+      border: 5px solid #c7a17a;
+      border-radius: 15px;
+    }
+    form {
+      margin-top: 30px;
+    }
+    input, textarea {
+      width: 90%;
+      max-width: 400px;
+      padding: 10px;
+      margin: 10px auto;
+      display: block;
+      border: 1px solid #c7a17a;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 30px;
+      background: #c7a17a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #5b3924;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<audio autoplay loop hidden>
+  <source src="Sempurna.mp3" type="audio/mp3">
+</audio>
+
+<header>
+  <h1>Undangan Pernikahan</h1>
+  <p>Alif & Rani</p>
+  <p>20 November 2027 - Hotel Resident Bandung</p>
+</header>
+
+<section class="section">
+  <h2>Bismillahirrahmanirrahim</h2>
+  <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.</p>
+</section>
+
+<section class="section couple">
+  <div class="person">
+    <img src="fa.jpg" alt="Alif Ramadhan">
+    <h3>Alif Ramadhan</h3>
+    <p>Putra dari Ibu Sida & Bapak Asep</p>
+  </div>
+  <div class="person">
+    <img src="fr.jpg" alt="Sri Rengganis Maharani">
+    <h3>Sri Rengganis Maharani</h3>
+    <p>Putri dari Ibu Intan & Bapak Aji</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Waktu & Tempat</h2>
+  <p>Akad & Resepsi: Sabtu, 20 November 2027<br>Hotel Resident Bandung<br>Pukul 09.00 WIB - Selesai</p>
+  <div class="countdown" id="countdown"></div>
+</section>
+
+<section class="section gallery">
+  <h2>Galeri</h2>
+  <img src="ft1.jpg" alt="Galeri 1">
+  <img src="ft2.jpg" alt="Galeri 2">
+  <img src="ft3.jpg" alt="Galeri 2">
+</section>
+
+<section class="section">
+  <h2>RSVP & Ucapan</h2>
+  <form action="https://formsubmit.co/aliframadan091200@gmail.com" method="POST">
+    <input type="text" name="name" placeholder="Nama Anda" required>
+    <textarea name="message" placeholder="Ucapan untuk pengantin" required></textarea>
+    <button type="submit">Kirim</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2027 Alif & Rani</p>
+</footer>
+
+<script>
+  const countdown = document.getElementById("countdown");
+  const targetDate = new Date("2027-11-20T09:00:00").getTime();
+  const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const gap = targetDate - now;
+
+    if (gap <= 0) {
+      countdown.innerHTML = "Hari Bahagia Telah Tiba!";
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((gap % (1000 * 60)) / 1000);
+
+    countdown.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+  }, 1000);
+</script>
+
+</body>
+</html>
